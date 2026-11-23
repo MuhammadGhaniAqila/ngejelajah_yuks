@@ -29,9 +29,9 @@ export const DEMO_USER: User = {
 export const DEMO_PAKET_LIST: PaketTiket[] = [
   {
     id: 1,
-    nama_paket: "Tiket Masuk Terusan Reguler Dufan",
+    nama_paket: "Tiket Masuk Terusan Reguler Jelajahin",
     deskripsi:
-      "Akses penuh ke seluruh wahana reguler Dufan selama 1 hari kunjungan, lengkap dengan maksimal 2 slot antrean virtual aktif secara bersamaan.",
+      "Akses penuh ke seluruh wahana reguler Jelajahin Theme Park selama 1 hari kunjungan, lengkap dengan maksimal 2 slot antrean virtual aktif secara bersamaan.",
     harga: 275000,
     jatah_antrean_aktif: 2,
     is_bundle: false,
@@ -41,7 +41,7 @@ export const DEMO_PAKET_LIST: PaketTiket[] = [
     id: 2,
     nama_paket: "Paket Bundling Hemat + Antrean Prioritas",
     deskripsi:
-      "Tiket terusan Dufan ditambah jatah hingga 4 slot antrean virtual aktif bersamaan untuk memaksimalkan waktu bermain tanpa antre panjang.",
+      "Tiket terusan Jelajahin ditambah jatah hingga 4 slot antrean virtual aktif bersamaan untuk memaksimalkan waktu bermain tanpa antre panjang.",
     harga: 395000,
     jatah_antrean_aktif: 4,
     is_bundle: true,
@@ -52,11 +52,11 @@ export const DEMO_PAKET_LIST: PaketTiket[] = [
 export const DEMO_WAHANA_LIST: Wahana[] = [
   {
     id: 1,
-    nama_wahana: "Halilintar Extreme Coaster",
+    nama_wahana: "Lintas Langit Coaster",
     zona: "Ekstrem",
     deskripsi:
       "Roller coaster berkecepatan tinggi dengan lintasan corkscrew dan loop ganda yang memacu adrenalin.",
-    gambar_url: "/photos/unit-dufan.jpg",
+    gambar_url: "/photos/unit-wahana.jpg",
     tinggi_minimal_cm: 125,
     kategori_usia: "Remaja & Dewasa",
     kapasitas_kloter: 24,
@@ -68,11 +68,11 @@ export const DEMO_WAHANA_LIST: Wahana[] = [
   },
   {
     id: 2,
-    nama_wahana: "Kora-Kora Samudra",
+    nama_wahana: "Galeon Nusantara",
     zona: "Ekstrem",
     deskripsi:
       "Ayunan perahu raksasa yang mengayun hingga kemiringan tinggi dan memberi sensasi melayang.",
-    gambar_url: "/photos/hero-ancol.jpg",
+    gambar_url: "/photos/hero-jelajahin.jpg",
     tinggi_minimal_cm: 125,
     kategori_usia: "Remaja & Dewasa",
     kapasitas_kloter: 30,
@@ -87,8 +87,8 @@ export const DEMO_WAHANA_LIST: Wahana[] = [
     nama_wahana: "Bianglala Skyline",
     zona: "Keluarga",
     deskripsi:
-      "Kincir ria ikonik Dufan setinggi 33 meter untuk menikmati panorama kawasan Ancol dan laut Jakarta.",
-    gambar_url: "/photos/unit-dufan.jpg",
+      "Kincir ria ikonik setinggi 33 meter untuk menikmati panorama kawasan wisata pesisir dan laut utara.",
+    gambar_url: "/photos/unit-wahana.jpg",
     tinggi_minimal_cm: 100,
     kategori_usia: "Semua Usia (Pendamping <110cm)",
     kapasitas_kloter: 36,
@@ -100,11 +100,11 @@ export const DEMO_WAHANA_LIST: Wahana[] = [
   },
   {
     id: 4,
-    nama_wahana: "Istana Boneka Nusantara",
+    nama_wahana: "Galeri Diorama Nusantara",
     zona: "Keluarga",
     deskripsi:
       "Perjalanan perahu menyusuri diorama budaya Nusantara dan mancanegara di ruangan sejuk ber-AC.",
-    gambar_url: "/photos/unit-seaworld.jpg",
+    gambar_url: "/photos/unit-akuarium.jpg",
     tinggi_minimal_cm: 0,
     kategori_usia: "Semua Usia & Balita",
     kapasitas_kloter: 50,
@@ -116,11 +116,11 @@ export const DEMO_WAHANA_LIST: Wahana[] = [
   },
   {
     id: 5,
-    nama_wahana: "Arung Jeram Dufan",
+    nama_wahana: "Arung Jeram Jelajahin",
     zona: "Air",
     deskripsi:
       "Petualangan perahu karet bundar menyusuri jeram buatan berarus deras bersama teman atau keluarga.",
-    gambar_url: "/photos/unit-atlantis.jpg",
+    gambar_url: "/photos/unit-air.jpg",
     tinggi_minimal_cm: 110,
     kategori_usia: "Anak, Remaja & Dewasa",
     kapasitas_kloter: 12,
@@ -132,11 +132,11 @@ export const DEMO_WAHANA_LIST: Wahana[] = [
   },
   {
     id: 6,
-    nama_wahana: "Turangga-Rangga",
+    nama_wahana: "Komidi Putar Klasik",
     zona: "Keluarga",
     deskripsi:
       "Komidi putar klasik berlampu hangat yang ramah bagi anak-anak maupun foto keluarga.",
-    gambar_url: "/photos/unit-samudra-birdland.jpg",
+    gambar_url: "/photos/unit-satwa.jpg",
     tinggi_minimal_cm: 90,
     kategori_usia: "Anak & Keluarga",
     kapasitas_kloter: 40,
@@ -171,7 +171,7 @@ function buildCalendarQuota(): KuotaHarian[] {
 export function getDemoKawasanInfo(): KawasanInfo {
   const kalender = buildCalendarQuota();
   return {
-    nama_kawasan: "Dunia Fantasi (Dufan) Ancol",
+    nama_kawasan: "Jelajahin Theme Park",
     jam_buka: "09:00",
     jam_tutup: "18:00",
     hari_ini: kalender[0],
@@ -184,7 +184,7 @@ function getInitialReservasi(): ReservasiTiket[] {
   return [
     {
       id: 1,
-      kode_booking: "JLJ-DUFAN-0001",
+      kode_booking: "JLJ-PARK-0001",
       qr_token: "JLJ-QR-DEMO-AKTIF-0001",
       tanggal_kunjungan: today,
       jumlah_tiket: 2,
@@ -314,12 +314,12 @@ export const DEMO_PROMO_LIST: PromoItem[] = [
     kategori: "Member & Pelajar",
     diskon_badge: "Hemat 20%",
     periode: "Berlaku hingga 30 Des 2026",
-    kode_promo: "DUFANPELAJAR20",
+    kode_promo: "JELAJAHPELAJAR20",
     ringkasan:
       "Potongan tiket masuk reguler untuk minimal pemesanan 4 tiket dengan kartu pelajar atau akun terdaftar.",
     ketentuan:
       "Berlaku pada hari kerja (Senin sampai Jumat) di luar musim liburan nasional dan tidak digabung dengan promo bundling lain.",
-    gambar_url: "/photos/unit-dufan.jpg",
+    gambar_url: "/photos/unit-wahana.jpg",
   },
   {
     id: 2,
@@ -332,7 +332,7 @@ export const DEMO_PROMO_LIST: PromoItem[] = [
       "Tiket terusan seharian dilengkapi jatah hingga 4 slot antrean virtual bersamaan untuk keluarga dan rombongan.",
     ketentuan:
       "Berlaku untuk seluruh wahana yang berstatus Lampu Hijau dan memenuhi syarat tinggi badan minimal pengunjung.",
-    gambar_url: "/photos/hero-ancol.jpg",
+    gambar_url: "/photos/hero-jelajahin.jpg",
   },
   {
     id: 3,
@@ -340,12 +340,12 @@ export const DEMO_PROMO_LIST: PromoItem[] = [
     kategori: "Tiket Hemat",
     diskon_badge: "Diskon Rp 40.000",
     periode: "Pembelian H-3 Kunjungan",
-    kode_promo: "PAGIDUFAN40",
+    kode_promo: "PAGIJELAJAH40",
     ringkasan:
       "Potongan langsung per tiket untuk pemesanan online minimal 3 hari sebelum tanggal kunjungan yang masih tersedia.",
     ketentuan:
       "Kuota promo terbatas untuk 500 pemesan pertama setiap harinya dan langsung aktif saat check-in di gerbang utama.",
-    gambar_url: "/photos/unit-atlantis.jpg",
+    gambar_url: "/photos/unit-air.jpg",
   },
   {
     id: 4,
@@ -355,7 +355,7 @@ export const DEMO_PROMO_LIST: PromoItem[] = [
     periode: "Sabtu & Minggu",
     kode_promo: "WEEKENDKULINER",
     ringkasan:
-      "Bonus voucher minuman segar di area restoran Dufan untuk setiap transaksi minimal 3 tiket terusan akhir pekan.",
+      "Bonus voucher minuman segar di area restoran kawasan untuk setiap transaksi minimal 3 tiket terusan akhir pekan.",
     ketentuan:
       "Voucher dapat ditukarkan di outlet Food & Beverages mitra selama tiket berstatus Aktif di Kawasan.",
     gambar_url: "/photos/resort-kuliner.jpg",
@@ -367,40 +367,40 @@ export const DEMO_ACARA_LIST: AcaraItem[] = [
     id: 1,
     judul: "Parade Fantasi Keliling Dunia",
     kategori: "Parade",
-    lokasi: "Boulevard Utama Dufan",
+    lokasi: "Boulevard Utama Jelajahin",
     jadwal: "Setiap Sabtu & Minggu",
     jam: "15:30 - 16:30 WIB",
     ringkasan:
-      "Iring-iringan karakter maskot Dufan, kostum tematik zona Eropa hingga Asia, dan atraksi musik jalanan.",
-    gambar_url: "/photos/unit-dufan.jpg",
+      "Iring-iringan karakter maskot Jelajahin, kostum tematik zona Eropa hingga Asia, dan atraksi musik jalanan.",
+    gambar_url: "/photos/unit-wahana.jpg",
   },
   {
     id: 2,
-    judul: "Pentas Musik Senja Pesisir Ancol",
+    judul: "Pentas Musik Senja Pesisir",
     kategori: "Musik",
-    lokasi: "Panggung Terbuka Pantai Lagoon",
+    lokasi: "Panggung Terbuka Pantai Timur",
     jadwal: "Akhir Pekan & Hari Libur",
     jam: "17:00 - 19:30 WIB",
     ringkasan:
-      "Penampilan band akustik dan musisi tamu di tepi pantai Ancol yang dapat dinikmati setelah keluar dari wahana Dufan.",
-    gambar_url: "/photos/hero-ancol.jpg",
+      "Penampilan band akustik dan musisi tamu di tepi pantai yang dapat dinikmati setelah keluar dari area wahana.",
+    gambar_url: "/photos/hero-jelajahin.jpg",
   },
   {
     id: 3,
-    judul: "Pertunjukan Sulap & Ilusi Fantasi",
+    judul: "Pertunjukan Sulap & Ilusi Keluarga",
     kategori: "Pertunjukan",
-    lokasi: "Indoor Stage Dunia Kartun",
+    lokasi: "Indoor Stage Zona Keluarga",
     jadwal: "Harian (Selasa sampai Minggu)",
     jam: "13:00 & 16:00 WIB",
     ringkasan:
       "Pertunjukan interaktif keluarga yang cocok ditonton anak-anak sembari beristirahat menunggu panggilan kloter antrean virtual.",
-    gambar_url: "/photos/unit-samudra-birdland.jpg",
+    gambar_url: "/photos/unit-satwa.jpg",
   },
   {
     id: 4,
     judul: "Festival Kuliner Nusantara Malam",
     kategori: "Parade",
-    lokasi: "Promenade Taman Impian Ancol",
+    lokasi: "Promenade Pesisir Jelajahin",
     jadwal: "Jumat sampai Minggu",
     jam: "16:00 - 21:00 WIB",
     ringkasan:
@@ -412,56 +412,56 @@ export const DEMO_ACARA_LIST: AcaraItem[] = [
 export const DEMO_VENUE_LIST: VenueItem[] = [
   {
     id: 1,
-    nama: "Putri Duyung Resort Ancol",
+    nama: "Laguna Pesisir Cottage",
     kategori: "Resort",
-    area: "Tepi Pantai Timur Ancol",
+    area: "Tepi Pantai Timur Kawasan",
     harga_mulai: "Mulai Rp 1.150.000 / malam",
     fasilitas: "Cottage keluarga, kolam renang tepi laut, akses shuttle kawasan",
     ringkasan:
-      "Penginapan bernuansa cottage pribadi di pinggir pantai yang dekat dengan gerbang utama kawasan rekreasi Ancol.",
+      "Penginapan bernuansa cottage pribadi di pinggir pantai yang dekat dengan gerbang utama kawasan wisata Jelajahin.",
     gambar_url: "/photos/resort-kuliner.jpg",
   },
   {
     id: 2,
-    nama: "Mercure Convention Center Ancol",
+    nama: "Grand Marina Resort & Convention",
     kategori: "Hotel",
-    area: "Kawasan Pantai Indah Ancol",
+    area: "Kawasan Pesisir Jelajahin",
     harga_mulai: "Mulai Rp 980.000 / malam",
     fasilitas: "Kamar menghadap laut, kolam anak, ruang pertemuan & aula acara",
     ringkasan:
-      "Hotel bintang empat dengan akses berjalan kaki menuju pantai dan layanan kendaraan kawasan menuju pintu masuk Dufan.",
-    gambar_url: "/photos/hero-ancol.jpg",
+      "Hotel bintang empat dengan akses berjalan kaki menuju pantai dan layanan kendaraan kawasan menuju pintu masuk taman wisata.",
+    gambar_url: "/photos/hero-jelajahin.jpg",
   },
   {
     id: 3,
-    nama: "Discovery Hotel Ancol",
+    nama: "Jelajahin Gateway Hotel",
     kategori: "Hotel",
-    area: "Dekat Gerbang Dunia Fantasi",
+    area: "Dekat Gerbang Utama Taman Wisata",
     harga_mulai: "Mulai Rp 920.000 / malam",
-    fasilitas: "Hanya 5 menit ke Dufan, kolam renang laguna, taman bermain anak",
+    fasilitas: "Hanya 5 menit ke gerbang utama, kolam renang laguna, taman bermain anak",
     ringkasan:
-      "Pilihan menginap terdekat dari pintu gerbang Dufan agar pengunjung bisa masuk kawasan lebih pagi saat wahana baru dibuka.",
-    gambar_url: "/photos/unit-atlantis.jpg",
+      "Pilihan menginap terdekat dari pintu gerbang utama agar pengunjung bisa masuk kawasan lebih pagi saat wahana baru dibuka.",
+    gambar_url: "/photos/unit-air.jpg",
   },
   {
     id: 4,
-    nama: "Ecopark Multipurpose Venue",
+    nama: "Taman Hijau Multipurpose Venue",
     kategori: "Venue Acara",
-    area: "Allianz Ecopark Ancol",
+    area: "Taman Hijau Jelajahin",
     harga_mulai: "Reservasi Rombongan & Sekolah",
     fasilitas: "Area gathering hingga 1.500 orang, taman hijau, panggung outdoor",
     ringkasan:
       "Area terbuka hijau untuk acara studi tur sekolah, gathering komunitas, dan kegiatan luar ruang keluarga.",
-    gambar_url: "/photos/unit-samudra-birdland.jpg",
+    gambar_url: "/photos/unit-satwa.jpg",
   },
 ];
 
 export const DEMO_FNB_LIST: FnbItem[] = [
   {
     id: 1,
-    nama: "Bandar Djakarta Ancol",
+    nama: "Dermaga Rasa Seafood",
     kategori: "Tepi Pantai",
-    area: "Pintu Timur Pantai Ancol",
+    area: "Pintu Timur Pesisir Jelajahin",
     jam_buka: "11:00 - 22:00 WIB",
     kisaran_harga: "Rp 85.000 - Rp 250.000 / porsi",
     menu_andalan: "Ikan bakar segar, udang saus madu, kepiting lada hitam",
@@ -469,40 +469,40 @@ export const DEMO_FNB_LIST: FnbItem[] = [
   },
   {
     id: 2,
-    nama: "Kafe Hoax & Food Court Dufan",
+    nama: "Food Court Zona Petualangan",
     kategori: "Restoran Keluarga",
-    area: "Zona Amerika (Dekat Arung Jeram)",
+    area: "Zona Air (Dekat Arung Jeram)",
     jam_buka: "09:30 - 18:00 WIB",
     kisaran_harga: "Rp 35.000 - Rp 75.000 / porsi",
     menu_andalan: "Nasi ayam crispy, mi goreng spesial, es teh tarik dingin",
-    gambar_url: "/photos/unit-dufan.jpg",
+    gambar_url: "/photos/unit-wahana.jpg",
   },
   {
     id: 3,
-    nama: "Columbus Resto Kapal Pinisi",
+    nama: "Kapal Pinisi Resto",
     kategori: "Restoran Keluarga",
-    area: "Area Tengah Taman Dufan",
+    area: "Area Tengah Taman Wisata",
     jam_buka: "10:00 - 17:30 WIB",
     kisaran_harga: "Rp 45.000 - Rp 95.000 / porsi",
     menu_andalan: "Paket nasi bento keluarga, soto betawi, es kelapa muda",
-    gambar_url: "/photos/unit-seaworld.jpg",
+    gambar_url: "/photos/unit-akuarium.jpg",
   },
   {
     id: 4,
-    nama: "Le Bridge Kopi & Gelato Dermaga",
+    nama: "Dermaga Senja Kopi & Gelato",
     kategori: "Kafe & Minuman",
-    area: "Jembatan Cinta Pantai Indah",
+    area: "Dermaga Timur Pantai Jelajahin",
     jam_buka: "10:00 - 21:00 WIB",
     kisaran_harga: "Rp 28.000 - Rp 80.000",
     menu_andalan: "Kopi susu gula aren, gelato artisan, kentang goreng keju",
-    gambar_url: "/photos/hero-ancol.jpg",
+    gambar_url: "/photos/hero-jelajahin.jpg",
   },
 ];
 
 export const DEMO_BLOG_LIST: BlogPost[] = [
   {
     id: 1,
-    judul: "Cara Keliling Dufan Bebas Antre Lama Pakai Antrean Virtual",
+    judul: "Cara Keliling Taman Wisata Bebas Antre Lama Pakai Antrean Virtual",
     kategori: "Panduan Kunjungan",
     tanggal: "18 November 2026",
     waktu_baca: "4 menit baca",
@@ -510,10 +510,10 @@ export const DEMO_BLOG_LIST: BlogPost[] = [
       "Atur urutan naik wahana ekstrem dan wahana air sejak pagi dengan memantau lampu status dan mengambil kloter virtual lewat ponsel.",
     isi: [
       "Datang sebelum pukul 09:30 WIB memberi kesempatan paling leluasa karena gerbang baru dibuka dan kuota pengunjung masih tersebar di area depan.",
-      "Gunakan halaman Wahana untuk melihat kombinasi Lampu Hijau dan tingkat keramaian Sepi terlebih dahulu. Naiklah wahana dengan durasi cepat atau antrean pendek sambil mendaftarkan nomor antrean virtual untuk wahana favorit seperti Halilintar.",
+      "Gunakan halaman Wahana untuk melihat kombinasi Lampu Hijau dan tingkat keramaian Sepi terlebih dahulu. Naiklah wahana dengan durasi cepat atau antrean pendek sambil mendaftarkan nomor antrean virtual untuk wahana favorit seperti Lintas Langit Coaster.",
       "Selama nomor antreanmu masih berstatus Menunggu, manfaatkan waktu untuk beristirahat di area kuliner atau menonton pertunjukan dalam ruangan tanpa takut kehilangan giliran kloter.",
     ],
-    gambar_url: "/photos/unit-dufan.jpg",
+    gambar_url: "/photos/unit-wahana.jpg",
   },
   {
     id: 2,
@@ -524,24 +524,24 @@ export const DEMO_BLOG_LIST: BlogPost[] = [
     ringkasan:
       "Ketahui patokan tinggi badan minimal sebelum berjalan ke lokasi wahana agar anak tidak kecewa saat diperiksa petugas di pintu antrean.",
     isi: [
-      "Setiap wahana di Dufan memiliki batas tinggi minimal demi menjaga pengaman kursi bekerja sempurna sepanjang permainan berlangsung.",
-      "Untuk anak dengan tinggi di bawah 100 cm, pilihan paling nyaman meliputi Istana Boneka Nusantara dan Turangga-Rangga. Anak bertinggi 110 cm sudah dapat mencoba Arung Jeram Dufan dengan pendampingan keluarga.",
+      "Setiap wahana di kawasan wisata memiliki batas tinggi minimal demi menjaga pengaman kursi bekerja sempurna sepanjang permainan berlangsung.",
+      "Untuk anak dengan tinggi di bawah 100 cm, pilihan paling nyaman meliputi Galeri Diorama Nusantara dan Komidi Putar Klasik. Anak bertinggi 110 cm sudah dapat mencoba Arung Jeram Jelajahin dengan pendampingan keluarga.",
       "Fitur Filter Tinggi Badan di Jelajahin langsung menandai wahana mana yang sudah memenuhi syarat dan mana yang perlu dilewati sebelum kamu mengambil nomor antrean.",
     ],
-    gambar_url: "/photos/unit-samudra-birdland.jpg",
+    gambar_url: "/photos/unit-satwa.jpg",
   },
   {
     id: 3,
-    judul: "Rekomendasi Tempat Makan & Menginap Satu Kawasan di Ancol",
+    judul: "Rekomendasi Tempat Makan & Menginap Satu Kawasan Jelajahin",
     kategori: "Kuliner & Menginap",
     tanggal: "10 November 2026",
     waktu_baca: "5 menit baca",
     ringkasan:
-      "Padukan seharian bermain di Dufan dengan pilihan makan siang cepat di dalam taman serta penginapan resort tepi pantai untuk liburan keluarga.",
+      "Padukan seharian bermain di taman wisata dengan pilihan makan siang cepat di dalam taman serta penginapan resort tepi pantai untuk liburan keluarga.",
     isi: [
-      "Untuk makan siang di sela permainan wahana, pilih Food Court zona Amerika atau Columbus Resto agar tidak perlu keluar dari gerbang utama Dufan.",
-      "Bagi pengunjung dari luar kota yang ingin masuk paling pagi keesokan harinya, menginap di hotel sekitar gerbang Dufan seperti Discovery Hotel atau cottage Putri Duyung Resort mempersingkat waktu tempuh ke area parkir.",
-      "Menjelang sore setelah pukul 17:00 WIB, kamu bisa bergeser ke kawasan tepi pantai untuk menikmati hidangan laut di Bandar Djakarta sambil menyaksikan hiburan musik senja.",
+      "Untuk makan siang di sela permainan wahana, pilih Food Court Zona Petualangan atau Kapal Pinisi Resto agar tidak perlu keluar dari gerbang utama kawasan.",
+      "Bagi pengunjung dari luar kota yang ingin masuk paling pagi keesokan harinya, menginap di hotel sekitar gerbang utama seperti Jelajahin Gateway Hotel atau cottage Laguna Pesisir Cottage mempersingkat waktu tempuh ke area parkir.",
+      "Menjelang sore setelah pukul 17:00 WIB, kamu bisa bergeser ke kawasan tepi pantai untuk menikmati hidangan laut di Dermaga Rasa Seafood sambil menyaksikan hiburan musik senja.",
     ],
     gambar_url: "/photos/resort-kuliner.jpg",
   },

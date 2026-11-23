@@ -77,10 +77,10 @@ export default function VenuePage() {
               className="mt-3 text-3xl font-bold tracking-tight text-[#0F2347] sm:text-4xl"
               style={{ fontFamily: "var(--font-display)" }}
             >
-              Resort, Hotel &amp; Venue Ancol
+              Resort, Hotel &amp; Venue Kawasan
             </h1>
             <p className="mt-2 max-w-2xl text-sm text-[#475569] sm:text-base">
-              Pilihan penginapan tepi laut dekat gerbang Dunia Fantasi serta
+              Pilihan penginapan tepi laut dekat gerbang taman wisata serta
               ruang terbuka hijau untuk acara keluarga dan rombongan.
             </p>
           </div>

@@ -49,7 +49,7 @@ class PortalController extends Controller
             'success' => true,
             'data' => [
                 'kawasan' => [
-                    'nama_kawasan' => 'Dunia Fantasi (Dufan) Ancol',
+                    'nama_kawasan' => 'Jelajahin Theme Park',
                     'jam_buka' => '09:00',
                     'jam_tutup' => '18:00',
                     'hari_ini' => $hariIni->toApiArray(),

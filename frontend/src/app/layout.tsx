@@ -15,9 +15,9 @@ const jakartaSans = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Jelajahin | Smart Ticketing & Virtual Queue Dufan Ancol",
+  title: "Jelajahin | Smart Ticketing & Virtual Queue Taman Wisata",
   description:
-    "Pesan tiket masuk berkuota, cek status live dan kepadatan wahana Dufan Ancol, serta kelola antrean virtual dalam satu sistem Jelajahin.",
+    "Pesan tiket masuk berkuota, cek status live dan kepadatan wahana Jelajahin Theme Park, serta kelola antrean virtual dalam satu sistem Jelajahin.",
 };
 
 export default function RootLayout({

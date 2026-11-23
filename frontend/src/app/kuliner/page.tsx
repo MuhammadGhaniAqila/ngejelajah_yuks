@@ -82,11 +82,11 @@ export default function KulinerPage() {
               className="mt-3 text-3xl font-bold tracking-tight text-[#0F2347] sm:text-4xl"
               style={{ fontFamily: "var(--font-display)" }}
             >
-              Kuliner &amp; Restoran di Ancol
+              Kuliner &amp; Restoran Kawasan
             </h1>
             <p className="mt-2 max-w-2xl text-sm text-[#475569] sm:text-base">
-              Pilihan tempat makan cepat di dalam taman Dufan hingga restoran
-              keluarga tepi laut sepanjang area Ancol.
+              Pilihan tempat makan cepat di dalam taman rekreasi hingga restoran
+              keluarga tepi laut di sepanjang kawasan Jelajahin.
             </p>
           </div>
         </section>

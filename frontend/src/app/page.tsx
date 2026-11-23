@@ -185,12 +185,12 @@ export default function HomePage() {
       <Navbar />
 
       <main id="main-content" tabIndex={-1} className="flex-1">
-        {/* Section 1: Bright Ancol Royal Blue Hero Showcase Banner */}
+        {/* Section 1: Bright Jelajahin Royal Blue Hero Showcase Banner */}
         <section className="border-b border-[#DCE6F5] bg-[#F4F8FC] py-6 md:py-8">
           <div className="mx-auto max-w-6xl px-4 sm:px-6">
             <div className="relative overflow-hidden rounded-3xl bg-[#0033A0] px-5 pt-6 pb-7 text-white shadow-[0_14px_38px_rgba(0,51,160,0.18)] sm:px-8 md:px-10 md:pt-8">
               <Image
-                src="/photos/hero-ancol.jpg"
+                src="/photos/hero-jelajahin.jpg"
                 alt=""
                 priority
                 width={1200}
@@ -213,8 +213,8 @@ export default function HomePage() {
                   />
                   <span className="text-xs font-semibold tracking-wide text-[#E2EEFF] sm:text-sm">
                     {spotlightRide
-                      ? `Dufan Ancol · Zona ${spotlightRide.zona}`
-                      : "Dunia Fantasi · Taman Impian Jaya Ancol"}
+                      ? `Jelajahin Park · Zona ${spotlightRide.zona}`
+                      : "Jelajahin Theme Park · Wisata Terpadu"}
                   </span>
                 </div>
 
@@ -226,7 +226,7 @@ export default function HomePage() {
                   <span>
                     {kawasan
                       ? `Kawasan ${kawasan.hari_ini.status_kawasan} · Sisa ${kawasan.hari_ini.sisa_kuota.toLocaleString("id-ID")} Kuota`
-                      : "Taman Impian Jaya Ancol · Jakarta"}
+                      : "Jelajahin Theme Park · Jakarta"}
                   </span>
                 </Link>
               </div>
@@ -240,7 +240,7 @@ export default function HomePage() {
                   >
                     {spotlightRide
                       ? spotlightRide.nama_wahana
-                      : "DUNIA FANTASI DUFAN"}
+                      : "JELAJAHIN THEME PARK"}
                   </h1>
 
                   <p className="mt-3 text-xs font-medium text-[#E2EEFF] sm:text-sm">
@@ -406,7 +406,7 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* Section 2: Quick Utility Pills + Trip Planner Bar (Ancol.com/home rhythm) */}
+        {/* Section 2: Quick Utility Pills + Trip Planner Bar */}
         <section className="border-b border-[#DCE6F5] bg-white py-6">
           <div className="mx-auto max-w-6xl space-y-5 px-4 sm:px-6">
             <div className="grid grid-cols-2 gap-3 lg:grid-cols-4">
@@ -476,11 +476,11 @@ export default function HomePage() {
               </Link>
             </div>
 
-            {/* Ancol Trip Planner style capsule bar */}
+            {/* Trip Planner style capsule bar */}
             <div className="flex flex-col justify-between gap-4 rounded-2xl border border-[#CBE2FF] bg-[#EBF5FF] px-5 py-4 sm:flex-row sm:items-center sm:px-6">
               <div>
                 <p className="text-xs font-bold uppercase tracking-wider text-[#0033A0]">
-                  Perencana Kunjungan Dufan
+                  Perencana Kunjungan Jelajahin
                 </p>
                 <p className="mt-0.5 text-base font-bold text-[#0F2347] sm:text-lg">
                   Rencanakan kunjungan bebas antre panjang dengan E-Ticket &amp;
@@ -515,7 +515,7 @@ export default function HomePage() {
           </div>
         ) : null}
 
-        {/* Section 3: Beli Tiket Sekarang (Ancol 2-Card Package Grid) */}
+        {/* Section 3: Beli Tiket Sekarang (2-Card Package Grid) */}
         <section
           id="paket"
           className="mx-auto max-w-6xl px-4 py-12 sm:px-6 md:py-14"
@@ -719,7 +719,7 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* Section 4: Jelajah Wahana Dufan & Kepadatan Live (Bright Ice Band) */}
+        {/* Section 4: Jelajah Wahana & Kepadatan Live (Bright Ice Band) */}
         <section className="border-y border-[#DCE6F5] bg-[#F4F8FC] py-12 md:py-14">
           <div className="mx-auto max-w-6xl px-4 sm:px-6">
             <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
@@ -830,7 +830,7 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* Section 4B: Acara & Pertunjukan Ancol */}
+        {/* Section 4B: Acara & Pertunjukan Kawasan */}
         <section id="acara" className="mx-auto max-w-6xl px-4 py-12 sm:px-6 md:py-14">
           <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
             <div>
@@ -842,7 +842,7 @@ export default function HomePage() {
               </h2>
               <p className="mt-1.5 text-sm text-[#475569]">
                 Jadwal parade tematik, pertunjukan panggung keluarga, dan musik
-                senja di kawasan Ancol.
+                senja di kawasan Jelajahin.
               </p>
             </div>
             <Link
@@ -1146,7 +1146,7 @@ export default function HomePage() {
               </h2>
               <p className="mt-1.5 text-sm text-[#475569]">
                 Tips keliling wahana, panduan tinggi badan anak, hingga info
-                kuliner dan menginap di Ancol.
+                kuliner dan menginap di kawasan Jelajahin.
               </p>
             </div>
             <Link
@@ -1238,7 +1238,8 @@ export default function HomePage() {
               </h2>
               <p className="mt-1.5 text-sm leading-relaxed text-[#475569]">
                 Semua tiket masuk, status check-in, dan slot antrean virtual
-                tercatat rapi untuk memudahkan kunjunganmu seharian di Dufan.
+                tercatat rapi untuk memudahkan kunjunganmu seharian di taman
+                wisata.
               </p>
             </div>
 
@@ -1264,7 +1265,7 @@ export default function HomePage() {
                   02
                 </span>
                 <p className="mt-1 text-xs font-bold uppercase tracking-wider text-[#475569]">
-                  Pintu Gerbang Dufan
+                  Pintu Gerbang Utama
                 </p>
                 <h3 className="mt-1 text-lg font-bold text-[#0F2347]">
                   Scan QR untuk aktivasi masuk

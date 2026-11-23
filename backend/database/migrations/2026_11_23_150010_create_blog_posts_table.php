@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('waktu_baca', 40);
             $table->text('ringkasan');
             $table->json('isi');
-            $table->string('gambar_url')->default('/photos/hero-ancol.jpg');
+            $table->string('gambar_url')->default('/photos/hero-jelajahin.jpg');
             $table->boolean('is_published')->default(true);
             $table->timestamps();
         });

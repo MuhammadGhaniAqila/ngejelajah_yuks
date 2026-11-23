@@ -31,7 +31,7 @@ class WahanaForm
                 TextInput::make('gambar_url')
                     ->label('Path / URL Gambar')
                     ->required()
-                    ->default('/photos/unit-dufan.jpg'),
+                    ->default('/photos/unit-wahana.jpg'),
                 TextInput::make('tinggi_minimal_cm')
                     ->label('Tinggi Minimal (cm)')
                     ->required()

@@ -32,7 +32,7 @@ const DROPDOWNS: Record<
     label: "Tiket & Promo",
     paths: ["/pesan", "/promo", "/tiket-saya"],
     items: [
-      { href: "/pesan", label: "Pesan Tiket Dufan" },
+      { href: "/pesan", label: "Pesan Tiket Masuk" },
       { href: "/promo", label: "Lihat Semua Promo" },
       { href: "/tiket-saya", label: "E-Ticket & Antrean Saya" },
     ],
@@ -145,7 +145,7 @@ export function Navbar() {
             Jelajahin
           </span>
           <span className="hidden whitespace-nowrap rounded-full bg-[#EBF5FF] px-2.5 py-0.5 text-[11px] font-semibold text-[#0033A0] lg:inline-block">
-            Dufan Ancol
+            Theme Park
           </span>
         </Link>
 
@@ -359,8 +359,8 @@ export function Navbar() {
               type="search"
               value={searchText}
               onChange={(e) => setSearchText(e.target.value)}
-              placeholder="Cari wahana Dufan..."
-              aria-label="Cari wahana Dufan"
+              placeholder="Cari wahana Jelajahin..."
+              aria-label="Cari wahana Jelajahin"
               className="min-h-[44px] flex-1 rounded-full border border-[#B9C8DC] bg-[#F4F8FC] px-4 py-2 text-sm text-[#0F2347] placeholder:text-[#5B6B82]"
             />
             <button
@@ -430,7 +430,7 @@ export function Navbar() {
                 onClick={() => setOpenForPath(null)}
                 className="inline-flex min-h-[44px] items-center justify-center rounded-full bg-[#FFB800] px-4 text-sm font-bold text-[#0F2347]"
               >
-                Pesan Tiket Dufan
+                Pesan Tiket Masuk
               </Link>
             </div>
           </nav>

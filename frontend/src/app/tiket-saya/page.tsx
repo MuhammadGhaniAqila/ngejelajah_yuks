@@ -208,7 +208,7 @@ export default function TiketSayaPage() {
                               className="mt-2 text-2xl font-bold text-[#0F2347]"
                               style={{ fontFamily: "var(--font-display)" }}
                             >
-                              {tiket.paket?.nama_paket || "Tiket Dufan"}
+                              {tiket.paket?.nama_paket || "Tiket Kawasan"}
                             </h3>
                             <p className="mt-1 text-xs text-[#475569]">
                               Kunjungan: {tiket.tanggal_kunjungan} ·{" "}
@@ -236,7 +236,7 @@ export default function TiketSayaPage() {
                               <p className="mt-2 text-xs leading-relaxed text-[#475569]">
                                 {active
                                   ? "Tiket sudah aktif! Kamu bisa langsung mengambil antrean virtual wahana."
-                                  : "Tunjukkan QR ini ke petugas di pintu gerbang Dufan untuk aktivasi."}
+                                  : "Tunjukkan QR ini ke petugas di pintu gerbang kawasan untuk aktivasi."}
                               </p>
                             </div>
                           </div>
@@ -296,7 +296,7 @@ export default function TiketSayaPage() {
                                 {antrean.nomor_antrean}
                               </span>
                               <h3 className="mt-1 text-lg font-bold text-[#0F2347]">
-                                {antrean.wahana?.nama_wahana || "Wahana Dufan"}
+                                {antrean.wahana?.nama_wahana || "Wahana Jelajahin"}
                               </h3>
                               <p className="mt-1 text-xs text-[#475569]">
                                 Kloter {antrean.nomor_kloter} · Estimasi tunggu{" "}

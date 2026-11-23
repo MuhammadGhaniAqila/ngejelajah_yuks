@@ -100,7 +100,7 @@ function WahanaInner({
               Katalog Wahana &amp; Filter Tinggi Badan
             </h1>
             <p className="mt-2 max-w-2xl text-sm leading-relaxed text-[#475569] sm:text-base">
-              Saring wahana Dufan berdasarkan zona, kepadatan antrean saat ini,
+              Saring wahana berdasarkan zona, kepadatan antrean saat ini,
               atau masukkan tinggi badan pengunjung untuk memastikan wahana
               aman dinaiki.
             </p>
@@ -131,7 +131,7 @@ function WahanaInner({
                       type="search"
                       value={query}
                       onChange={(e) => setQuery(e.target.value)}
-                      placeholder="Contoh: Halilintar, Bianglala..."
+                      placeholder="Contoh: Lintas Langit, Bianglala..."
                       className="min-h-[44px] w-full rounded-xl border border-[#B9C8DC] bg-white py-2 pr-3 pl-9 text-sm text-[#0F2347] placeholder:text-[#5B6B82]"
                     />
                   </div>

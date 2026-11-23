@@ -40,7 +40,7 @@ class BlogPostForm
                 TextInput::make('gambar_url')
                     ->label('Path / URL Gambar')
                     ->required()
-                    ->default('/photos/hero-ancol.jpg'),
+                    ->default('/photos/hero-jelajahin.jpg'),
                 Toggle::make('is_published')
                     ->default(true)
                     ->required(),

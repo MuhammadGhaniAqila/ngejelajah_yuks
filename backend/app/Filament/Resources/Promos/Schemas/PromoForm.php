@@ -38,7 +38,7 @@ class PromoForm
                 TextInput::make('gambar_url')
                     ->label('Path / URL Gambar')
                     ->required()
-                    ->default('/photos/hero-ancol.jpg'),
+                    ->default('/photos/hero-jelajahin.jpg'),
                 Toggle::make('is_active')
                     ->default(true)
                     ->required(),

@@ -135,7 +135,7 @@ function PesanContent() {
             className="text-3xl font-bold tracking-tight text-[#0033A0] sm:text-4xl"
             style={{ fontFamily: "var(--font-display)" }}
           >
-            Pesan Tiket Masuk &amp; Paket Dufan
+            Pesan Tiket Masuk &amp; Paket Wisata
           </h1>
           <p className="mt-2 text-sm text-[#475569]">
             Pilih tanggal kunjungan dengan kuota tersedia, tentukan paket, dan

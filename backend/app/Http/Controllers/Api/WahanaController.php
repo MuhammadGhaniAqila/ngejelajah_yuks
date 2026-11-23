@@ -79,7 +79,7 @@ class WahanaController extends Controller
 
         $wahana = Wahana::create([
             ...$validated,
-            'gambar_url' => $validated['gambar_url'] ?? '/photos/unit-dufan.jpg',
+            'gambar_url' => $validated['gambar_url'] ?? '/photos/unit-wahana.jpg',
             'status_lampu' => $validated['status_lampu'] ?? 'Hijau',
             'crowd_meter' => $validated['crowd_meter'] ?? 'Sepi',
             'kloter_berjalan' => 1,

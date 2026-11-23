@@ -9,7 +9,7 @@ interface PhotoSlotProps {
 
 /**
  * Renders a real raster image when provided (non-SVG photo URL/file),
- * or a calm coastal-tinted empty photo well ready to receive real Dufan photography.
+ * or a calm coastal-tinted empty photo well ready to receive park photography.
  */
 export function PhotoSlot({
   src,

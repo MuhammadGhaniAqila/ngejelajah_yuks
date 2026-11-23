@@ -27,7 +27,7 @@ class JelajahinApiTest extends TestCase
         $this->getJson('/api/kawasan')
             ->assertOk()
             ->assertJsonPath('success', true)
-            ->assertJsonPath('data.nama_kawasan', 'Dunia Fantasi (Dufan) Ancol');
+            ->assertJsonPath('data.nama_kawasan', 'Jelajahin Theme Park');
 
         $this->getJson('/api/paket-tiket')
             ->assertOk()
@@ -48,11 +48,15 @@ class JelajahinApiTest extends TestCase
         $this->getJson('/api/venue')->assertOk()->assertJsonCount(4, 'data');
         $this->getJson('/api/kuliner')->assertOk()->assertJsonCount(4, 'data');
         $this->getJson('/api/blog')->assertOk()->assertJsonCount(3, 'data');
-        $this->getJson('/api/portal-home')
+        $portalRes = $this->getJson('/api/portal-home')
             ->assertOk()
             ->assertJsonPath('success', true)
             ->assertJsonCount(6, 'data.wahana')
             ->assertJsonCount(4, 'data.promo');
+
+        $portalJson = strtolower((string) $portalRes->getContent());
+        $this->assertStringNotContainsString('dufan', $portalJson);
+        $this->assertStringNotContainsString('ancol', $portalJson);
 
         // Filament /admin/login page renders cleanly
         $this->get('/admin/login')->assertOk();

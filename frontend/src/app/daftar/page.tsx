@@ -64,8 +64,8 @@ export default function DaftarPage() {
             Daftar Akun Wisatawan
           </h1>
           <p className="mt-1.5 text-sm text-[#475569]">
-            Buat akun untuk memesan tiket Dufan Ancol dan menggunakan antrean
-            virtual wahana.
+            Buat akun untuk memesan tiket Jelajahin Theme Park dan menggunakan
+            antrean virtual wahana.
           </p>
 
           {errorMsg ? (

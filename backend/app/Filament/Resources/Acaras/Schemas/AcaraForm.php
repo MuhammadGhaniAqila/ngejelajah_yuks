@@ -35,7 +35,7 @@ class AcaraForm
                 TextInput::make('gambar_url')
                     ->label('Path / URL Gambar')
                     ->required()
-                    ->default('/photos/unit-dufan.jpg'),
+                    ->default('/photos/unit-wahana.jpg'),
                 Toggle::make('is_active')
                     ->default(true)
                     ->required(),

@@ -57,7 +57,7 @@ export default function MasukPage() {
           </h1>
           <p className="mt-1.5 text-sm text-[#475569]">
             Akses E-Ticket berkode QR dan kelola antrean virtual wahana selama
-            berkunjung di Dunia Fantasi Ancol.
+            berkunjung di Jelajahin Theme Park.
           </p>
 
           {errorMsg ? (

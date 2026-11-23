@@ -75,7 +75,7 @@ export default function AcaraPage() {
               className="mt-3 text-3xl font-bold tracking-tight text-[#0F2347] sm:text-4xl"
               style={{ fontFamily: "var(--font-display)" }}
             >
-              Acara &amp; Pertunjukan Ancol
+              Acara &amp; Pertunjukan Kawasan
             </h1>
             <p className="mt-2 max-w-2xl text-sm text-[#475569] sm:text-base">
               Saksikan parade keliling dunia, musik tepi pantai, hingga panggung
@@ -207,7 +207,7 @@ export default function AcaraPage() {
                                 `Jam Tampil: ${acara.jam}`,
                                 "Dapat dinikmati sembari menunggu giliran antrean virtual wahana.",
                               ],
-                              ctaLabel: "Pesan Tiket Masuk Dufan",
+                              ctaLabel: "Pesan Tiket Masuk Kawasan",
                               ctaHref: "/pesan",
                               imageUrl: acara.gambar_url,
                               photoLabel: "Foto Acara",

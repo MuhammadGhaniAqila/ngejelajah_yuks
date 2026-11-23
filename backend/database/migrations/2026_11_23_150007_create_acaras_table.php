@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('jadwal', 100);
             $table->string('jam', 60);
             $table->text('ringkasan');
-            $table->string('gambar_url')->default('/photos/unit-dufan.jpg');
+            $table->string('gambar_url')->default('/photos/unit-wahana.jpg');
             $table->boolean('is_active')->default(true);
             $table->timestamps();
         });

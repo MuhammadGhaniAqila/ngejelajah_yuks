@@ -80,7 +80,7 @@ export default function BlogPage() {
               className="mt-3 text-3xl font-bold tracking-tight text-[#0F2347] sm:text-4xl"
               style={{ fontFamily: "var(--font-display)" }}
             >
-              Panduan &amp; Cerita Wisata Ancol
+              Panduan &amp; Cerita Wisata Jelajahin
             </h1>
             <p className="mt-2 max-w-2xl text-sm text-[#475569] sm:text-base">
               Tips mengatur jadwal antrean virtual, informasi batas tinggi

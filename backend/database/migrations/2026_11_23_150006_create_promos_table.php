@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('kode_promo', 50);
             $table->text('ringkasan');
             $table->text('ketentuan');
-            $table->string('gambar_url')->default('/photos/hero-ancol.jpg');
+            $table->string('gambar_url')->default('/photos/hero-jelajahin.jpg');
             $table->boolean('is_active')->default(true);
             $table->timestamps();
         });

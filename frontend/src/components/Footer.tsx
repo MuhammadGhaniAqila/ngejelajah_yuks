@@ -29,8 +29,8 @@ export function Footer() {
           </div>
           <p className="mt-3 text-sm leading-relaxed text-[#475569]">
             Layanan resmi tiket berkuota, promo kunjungan, acara hiburan,
-            akomodasi resort, kuliner pesisir, dan antrean virtual Dunia Fantasi
-            (Dufan) Ancol.
+            akomodasi resort, kuliner pesisir, dan antrean virtual Jelajahin
+            Theme Park.
           </p>
           <p className="mt-3 text-xs font-bold text-[#0033A0]">
             Jam Operasional Kawasan: 09:00 - 18:00 WIB
@@ -152,10 +152,10 @@ export function Footer() {
               </a>
             </li>
             <li className="text-xs text-[#475569]">
-              Jl. Lodan Timur No. 7, Taman Impian Jaya Ancol, Jakarta Utara
+              Jl. Boulevard Pesisir No. 7, Kawasan Wisata Jelajahin, Jakarta
             </li>
             <li className="text-xs font-semibold text-[#0033A0]">
-              Ancol Customer Care: (021) 29 222 222
+              Jelajahin Customer Care: (021) 5000-7788
             </li>
           </ul>
         </div>

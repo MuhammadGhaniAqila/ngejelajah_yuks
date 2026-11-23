@@ -75,7 +75,7 @@ export default function PromoPage() {
           <div className="mx-auto max-w-6xl px-4 sm:px-6">
             <div className="inline-flex items-center gap-2 rounded-full bg-[#FFF6D6] px-3 py-1 text-xs font-bold text-[#8F6400]">
               <Ticket className="h-3.5 w-3.5" aria-hidden="true" />
-              <span>Promo Resmi Ancol &amp; Dufan</span>
+              <span>Promo Resmi Jelajahin Park</span>
             </div>
             <h1
               className="mt-3 text-3xl font-bold tracking-tight text-[#0F2347] sm:text-4xl"
