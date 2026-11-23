@@ -292,6 +292,19 @@ export function Navbar() {
 
           {user ? (
             <div className="flex items-center gap-2">
+              {user.role === "admin" || user.role === "operator" ? (
+                <Link
+                  href="/admin"
+                  aria-current={pathname === "/admin" ? "page" : undefined}
+                  className={`inline-flex min-h-[40px] items-center whitespace-nowrap rounded-full px-3.5 py-1.5 text-xs font-bold transition-colors ${
+                    pathname === "/admin"
+                      ? "bg-[#FFB800] text-[#0F2347]"
+                      : "border border-[#FFB800] bg-[#FFF6D6] text-[#8F6400] hover:bg-[#FFB800] hover:text-[#0F2347]"
+                  }`}
+                >
+                  Admin
+                </Link>
+              ) : null}
               <Link
                 href="/tiket-saya"
                 className="inline-flex min-h-[40px] items-center gap-2 whitespace-nowrap rounded-full border border-[#0033A0] bg-[#EBF5FF] px-3.5 py-1.5 text-xs font-bold text-[#0033A0] transition-colors hover:bg-[#0033A0] hover:text-white"
@@ -384,17 +397,28 @@ export function Navbar() {
             })}
             <div className="mt-2 flex flex-col gap-2 border-t border-[#DCE6F5] pt-3">
               {user ? (
-                <div className="flex items-center justify-between gap-2 px-1">
-                  <span className="text-sm font-bold text-[#0F2347]">
-                    {user.nama_lengkap}
-                  </span>
-                  <button
-                    type="button"
-                    onClick={handleLogout}
-                    className="inline-flex min-h-[44px] items-center rounded-full border border-[#B9C8DC] px-4 text-xs font-semibold text-[#475569]"
-                  >
-                    Keluar
-                  </button>
+                <div className="space-y-2">
+                  <div className="flex items-center justify-between gap-2 px-1">
+                    <span className="text-sm font-bold text-[#0F2347]">
+                      {user.nama_lengkap}
+                    </span>
+                    <button
+                      type="button"
+                      onClick={handleLogout}
+                      className="inline-flex min-h-[44px] items-center rounded-full border border-[#B9C8DC] px-4 text-xs font-semibold text-[#475569]"
+                    >
+                      Keluar
+                    </button>
+                  </div>
+                  {user.role === "admin" || user.role === "operator" ? (
+                    <Link
+                      href="/admin"
+                      onClick={() => setOpenForPath(null)}
+                      className="inline-flex min-h-[44px] w-full items-center justify-center rounded-full border border-[#FFB800] bg-[#FFF6D6] px-4 text-sm font-bold text-[#8F6400]"
+                    >
+                      Dashboard Admin
+                    </Link>
+                  ) : null}
                 </div>
               ) : (
                 <Link

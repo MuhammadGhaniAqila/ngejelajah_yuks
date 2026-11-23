@@ -137,6 +137,14 @@ export function Footer() {
                 Daftar Akun Baru
               </Link>
             </li>
+            <li>
+              <Link
+                href="/admin"
+                className="hover:text-[#0033A0] hover:underline"
+              >
+                Dashboard Admin &amp; Operator
+              </Link>
+            </li>
             <li className="text-xs text-[#475569]">
               Jl. Lodan Timur No. 7, Taman Impian Jaya Ancol, Jakarta Utara
             </li>

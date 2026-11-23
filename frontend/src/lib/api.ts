@@ -18,10 +18,12 @@ import {
 } from "./demo-data";
 import type {
   AcaraItem,
+  AdminOverviewResponse,
   AntreanVirtual,
   BlogPost,
   FnbItem,
   KawasanInfo,
+  KuotaHarian,
   PaketTiket,
   PromoItem,
   ReservasiTiket,
@@ -32,6 +34,10 @@ import type {
 
 export const API_BASE_URL =
   process.env.NEXT_PUBLIC_API_URL || "http://127.0.0.1:8000/api";
+
+export const FILAMENT_ADMIN_URL =
+  process.env.NEXT_PUBLIC_ADMIN_URL ||
+  API_BASE_URL.replace(/\/api\/?$/, "/admin");
 
 const IS_FRONTEND_ONLY = process.env.NEXT_PUBLIC_FRONTEND_ONLY === "true";
 
@@ -432,6 +438,69 @@ export const api = {
     }
     return request<AntreanVirtual>(`/antrean/${antreanId}/batal`, {
       method: "PATCH",
+    });
+  },
+
+  getAdminOverview: async () => {
+    return request<AdminOverviewResponse>("/admin/overview");
+  },
+
+  updateKuotaHarian: async (
+    tanggal: string,
+    body: { kuota_maksimal: number; status_kawasan: "Buka" | "Tutup" }
+  ) => {
+    return request<KuotaHarian>(`/admin/kuota/${encodeURIComponent(tanggal)}`, {
+      method: "PATCH",
+      body: JSON.stringify(body),
+    });
+  },
+
+  checkInTiket: async (kode: string) => {
+    return request<ReservasiTiket>("/operator/check-in", {
+      method: "POST",
+      body: JSON.stringify({ kode }),
+    });
+  },
+
+  updateWahanaOperasional: async (
+    wahanaId: number,
+    body: {
+      status_lampu?: Wahana["status_lampu"];
+      crowd_meter?: Wahana["crowd_meter"];
+      kloter_berjalan?: number;
+    }
+  ) => {
+    return request<Wahana>(`/wahana/${wahanaId}/operasional`, {
+      method: "PATCH",
+      body: JSON.stringify(body),
+    });
+  },
+
+  panggilKloterWahana: async (wahanaId: number) => {
+    return request<Wahana>(`/operator/wahana/${wahanaId}/panggil-kloter`, {
+      method: "POST",
+    });
+  },
+
+  createWahana: async (body: {
+    nama_wahana: string;
+    zona: Wahana["zona"];
+    deskripsi: string;
+    gambar_url?: string;
+    tinggi_minimal_cm: number;
+    kategori_usia: string;
+    kapasitas_kloter: number;
+    durasi_menit: number;
+  }) => {
+    return request<Wahana>("/wahana", {
+      method: "POST",
+      body: JSON.stringify(body),
+    });
+  },
+
+  deleteWahana: async (wahanaId: number) => {
+    return request<{ message: string }>(`/wahana/${wahanaId}`, {
+      method: "DELETE",
     });
   },
 };

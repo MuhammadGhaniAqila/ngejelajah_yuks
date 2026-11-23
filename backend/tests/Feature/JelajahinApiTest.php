@@ -100,6 +100,27 @@ class JelajahinApiTest extends TestCase
             ->assertOk()
             ->assertJsonPath('data.status_kunjungan', 'Aktif di Kawasan');
 
+        // 3b. Verifikasi RBAC Dashboard Admin (/api/admin/overview & kuota)
+        $this->app['auth']->forgetGuards();
+        $this->withToken($userToken)
+            ->getJson('/api/admin/overview')
+            ->assertStatus(403);
+
+        $this->app['auth']->forgetGuards();
+        $this->withToken($opToken)
+            ->getJson('/api/admin/overview')
+            ->assertOk()
+            ->assertJsonPath('success', true)
+            ->assertJsonCount(6, 'data.wahana');
+
+        $this->withToken($opToken)
+            ->patchJson("/api/admin/kuota/{$today}", [
+                'kuota_maksimal' => 5500,
+                'status_kawasan' => 'Buka',
+            ])
+            ->assertOk()
+            ->assertJsonPath('data.kuota_maksimal', 5500);
+
         // 4. Sekarang bisa ambil antrean virtual
         $this->app['auth']->forgetGuards();
         $queueRes = $this->withToken($userToken)

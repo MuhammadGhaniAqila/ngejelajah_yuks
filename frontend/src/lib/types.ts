@@ -132,3 +132,47 @@ export interface BlogPost {
   isi: string[];
   gambar_url?: string;
 }
+
+export interface AdminReservasiItem {
+  id: number;
+  kode_booking: string;
+  qr_token: string;
+  tanggal_kunjungan: string;
+  jumlah_tiket: number;
+  total_harga: number;
+  metode_pembayaran: string;
+  status_pembayaran: string;
+  status_kunjungan: string;
+  waktu_checkin: string | null;
+  pengunjung_nama: string;
+  pengunjung_email: string;
+  nama_paket: string;
+}
+
+export interface AdminAntreanItem {
+  id: number;
+  nomor_antrean: string;
+  nomor_kloter: number;
+  estimasi_tunggu_menit: number;
+  status_antrean: "Menunggu" | "Dipanggil" | "Selesai" | "Dibatalkan";
+  pengunjung_nama: string;
+  nama_wahana: string;
+  zona: string;
+}
+
+export interface AdminOverviewResponse {
+  stats: {
+    kuota_hari_ini: KuotaHarian;
+    total_tiket_terjual: number;
+    total_pendapatan: number;
+    tiket_aktif_kawasan: number;
+    antrean_aktif: number;
+    wahana_hijau: number;
+    wahana_merah: number;
+    wahana_maintenance: number;
+  };
+  wahana: Wahana[];
+  reservasi_terbaru: AdminReservasiItem[];
+  antrean_aktif_list: AdminAntreanItem[];
+  kalender_kuota: KuotaHarian[];
+}

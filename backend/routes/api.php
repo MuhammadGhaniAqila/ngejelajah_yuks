@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\AdminController;
 use App\Http\Controllers\Api\AntreanVirtualController;
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\KawasanController;
@@ -38,6 +39,8 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::patch('/antrean/{antrean}/batal', [AntreanVirtualController::class, 'batal']);
 
     // Operator & Admin endpoints
+    Route::get('/admin/overview', [AdminController::class, 'overview']);
+    Route::patch('/admin/kuota/{tanggal}', [AdminController::class, 'updateKuota']);
     Route::post('/operator/check-in', [ReservasiController::class, 'checkIn']);
     Route::post('/wahana', [WahanaController::class, 'store']);
     Route::put('/wahana/{wahana}', [WahanaController::class, 'update']);
