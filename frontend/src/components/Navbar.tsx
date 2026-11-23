@@ -48,8 +48,7 @@ const DROPDOWNS: Record<
 };
 
 const MOBILE_LINKS = [
-  { href: "/", label: "Landing" },
-  { href: "/home", label: "Beranda (Home)" },
+  { href: "/", label: "Beranda" },
   { href: "/pesan", label: "Pesan Tiket" },
   { href: "/promo", label: "Promo Spesial" },
   { href: "/wahana", label: "Katalog Wahana" },
@@ -120,7 +119,7 @@ export function Navbar() {
     }
     clearAuthSession();
     setOpenForPath(null);
-    router.push("/home");
+    router.push("/");
   }
 
   return (
@@ -153,16 +152,16 @@ export function Navbar() {
         <div ref={navAreaRef} className="hidden items-center gap-2 md:flex">
           <nav aria-label="Utama" className="flex items-center gap-0.5">
             <Link
-              href="/home"
-              aria-current={pathname === "/home" ? "page" : undefined}
+              href="/"
+              aria-current={pathname === "/" ? "page" : undefined}
               className={`relative inline-flex min-h-[44px] items-center whitespace-nowrap px-3 py-2 text-sm font-semibold transition-colors ${
-                pathname === "/home"
+                pathname === "/"
                   ? "text-[#0033A0]"
                   : "text-[#475569] hover:text-[#0033A0]"
               }`}
             >
               <span>Beranda</span>
-              {pathname === "/home" ? (
+              {pathname === "/" ? (
                 <span
                   aria-hidden="true"
                   className="absolute inset-x-3 bottom-1.5 h-[2px] rounded-full bg-[#0033A0]"

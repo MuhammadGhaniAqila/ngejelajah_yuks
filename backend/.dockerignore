@@ -1,0 +1,16 @@
+.env
+.env.*
+!.env.example
+!.env.production.example
+/vendor
+/node_modules
+/public/build
+/public/css/filament
+/public/js/filament
+/public/fonts/filament
+/public/hot
+/public/storage
+/storage/*.key
+/storage/logs/*.log
+/.phpunit.cache
+.phpunit.result.cache

@@ -38,15 +38,7 @@ export function Footer() {
           <ul className="mt-3 space-y-2 text-sm">
             <li>
               <Link href="/" className="hover:text-[#0033A0] hover:underline">
-                Halaman Landing
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/home"
-                className="hover:text-[#0033A0] hover:underline"
-              >
-                Beranda Utama (Home)
+                Beranda Utama
               </Link>
             </li>
             <li>
