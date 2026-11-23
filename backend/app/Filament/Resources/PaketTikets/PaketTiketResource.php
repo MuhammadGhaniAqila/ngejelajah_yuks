@@ -18,6 +18,12 @@ class PaketTiketResource extends Resource
 {
     protected static ?string $model = PaketTiket::class;
 
+    protected static ?string $navigationLabel = 'Paket Tiket';
+
+    protected static ?string $modelLabel = 'Paket Tiket';
+
+    protected static ?string $pluralModelLabel = 'Paket Tiket';
+
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
 
     public static function form(Schema $schema): Schema

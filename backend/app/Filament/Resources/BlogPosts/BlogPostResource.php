@@ -18,6 +18,12 @@ class BlogPostResource extends Resource
 {
     protected static ?string $model = BlogPost::class;
 
+    protected static ?string $navigationLabel = 'Blog Post';
+
+    protected static ?string $modelLabel = 'Blog Post';
+
+    protected static ?string $pluralModelLabel = 'Blog Post';
+
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
 
     public static function form(Schema $schema): Schema

@@ -18,6 +18,12 @@ class ReservasiTiketResource extends Resource
 {
     protected static ?string $model = ReservasiTiket::class;
 
+    protected static ?string $navigationLabel = 'Reservasi Tiket';
+
+    protected static ?string $modelLabel = 'Reservasi Tiket';
+
+    protected static ?string $pluralModelLabel = 'Reservasi Tiket';
+
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
 
     public static function form(Schema $schema): Schema

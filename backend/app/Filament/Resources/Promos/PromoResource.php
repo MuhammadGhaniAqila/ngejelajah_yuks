@@ -18,6 +18,12 @@ class PromoResource extends Resource
 {
     protected static ?string $model = Promo::class;
 
+    protected static ?string $navigationLabel = 'Promo';
+
+    protected static ?string $modelLabel = 'Promo';
+
+    protected static ?string $pluralModelLabel = 'Promo';
+
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
 
     public static function form(Schema $schema): Schema

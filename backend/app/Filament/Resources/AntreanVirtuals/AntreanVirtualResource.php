@@ -18,6 +18,12 @@ class AntreanVirtualResource extends Resource
 {
     protected static ?string $model = AntreanVirtual::class;
 
+    protected static ?string $navigationLabel = 'Antrean Virtual';
+
+    protected static ?string $modelLabel = 'Antrean Virtual';
+
+    protected static ?string $pluralModelLabel = 'Antrean Virtual';
+
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
 
     public static function form(Schema $schema): Schema

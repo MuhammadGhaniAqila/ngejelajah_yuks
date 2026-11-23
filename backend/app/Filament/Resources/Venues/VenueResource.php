@@ -18,6 +18,12 @@ class VenueResource extends Resource
 {
     protected static ?string $model = Venue::class;
 
+    protected static ?string $navigationLabel = 'Venue';
+
+    protected static ?string $modelLabel = 'Venue';
+
+    protected static ?string $pluralModelLabel = 'Venue';
+
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
 
     public static function form(Schema $schema): Schema

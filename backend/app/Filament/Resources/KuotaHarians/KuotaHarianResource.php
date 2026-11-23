@@ -18,6 +18,12 @@ class KuotaHarianResource extends Resource
 {
     protected static ?string $model = KuotaHarian::class;
 
+    protected static ?string $navigationLabel = 'Kuota Harian';
+
+    protected static ?string $modelLabel = 'Kuota Harian';
+
+    protected static ?string $pluralModelLabel = 'Kuota Harian';
+
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
 
     public static function form(Schema $schema): Schema

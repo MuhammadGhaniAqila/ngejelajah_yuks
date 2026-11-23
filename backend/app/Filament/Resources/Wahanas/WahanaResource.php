@@ -18,6 +18,12 @@ class WahanaResource extends Resource
 {
     protected static ?string $model = Wahana::class;
 
+    protected static ?string $navigationLabel = 'Wahana';
+
+    protected static ?string $modelLabel = 'Wahana';
+
+    protected static ?string $pluralModelLabel = 'Wahana';
+
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
 
     public static function form(Schema $schema): Schema

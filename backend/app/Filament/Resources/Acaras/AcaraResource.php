@@ -18,6 +18,12 @@ class AcaraResource extends Resource
 {
     protected static ?string $model = Acara::class;
 
+    protected static ?string $navigationLabel = 'Acara';
+
+    protected static ?string $modelLabel = 'Acara';
+
+    protected static ?string $pluralModelLabel = 'Acara';
+
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
 
     public static function form(Schema $schema): Schema

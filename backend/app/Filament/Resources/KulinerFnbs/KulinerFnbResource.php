@@ -18,6 +18,12 @@ class KulinerFnbResource extends Resource
 {
     protected static ?string $model = KulinerFnb::class;
 
+    protected static ?string $navigationLabel = 'Kuliner F&B';
+
+    protected static ?string $modelLabel = 'Kuliner F&B';
+
+    protected static ?string $pluralModelLabel = 'Kuliner F&B';
+
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
 
     public static function form(Schema $schema): Schema
