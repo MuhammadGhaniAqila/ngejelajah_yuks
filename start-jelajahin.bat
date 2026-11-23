@@ -17,6 +17,6 @@ start "Jelajahin Next.js Frontend" cmd /k "cd /d D:\PROJEK PSAS KIK,MK\websiteon
 echo.
 echo Semua server Jelajahin dinyalakan!
 echo - Website Utama      : http://localhost:3000/
-echo - Panel Operator     : http://127.0.0.1:8000/admin
+b3cb7213df23d152afd88fd98dba2ea0da8aa639echo - Panel Operator     : http://127.0.0.1:8000/admin
 echo - REST API           : http://127.0.0.1:8000/api/wahana
 pause
