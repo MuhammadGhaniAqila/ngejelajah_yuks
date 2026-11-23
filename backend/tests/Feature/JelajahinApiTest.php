@@ -3,11 +3,13 @@
 namespace Tests\Feature;
 
 use App\Models\KuotaHarian;
+use App\Models\LoginLog;
 use App\Models\PaketTiket;
 use App\Models\User;
 use App\Models\Wahana;
 use Database\Seeders\DatabaseSeeder;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\Auth;
 use Tests\TestCase;
 
 class JelajahinApiTest extends TestCase
@@ -142,5 +144,102 @@ class JelajahinApiTest extends TestCase
             ->getJson('/api/antrean/saya')
             ->assertOk()
             ->assertJsonPath('data.0.id', $antreanId);
+    }
+
+    public function test_admin_and_operator_dashboards_are_strictly_separated(): void
+    {
+        $admin = User::where('role', 'admin')->firstOrFail();
+        $operator = User::where('role', 'operator')->firstOrFail();
+        $wisatawan = User::where('role', 'wisatawan')->firstOrFail();
+
+        // Admin hanya melihat Panel Admin (Akun Pengguna & Riwayat Login), bukan menu Operator
+        $this->actingAs($admin)
+            ->get('/admin')
+            ->assertOk()
+            ->assertSee('Dashboard Admin')
+            ->assertSee('Akun Pengguna')
+            ->assertSee('Riwayat Login')
+            ->assertDontSee('Wahana');
+
+        $this->actingAs($admin)->get('/admin/users')->assertOk();
+        $this->actingAs($admin)->get('/admin/users/create')->assertOk();
+        $this->actingAs($admin)->get("/admin/users/{$wisatawan->id}/edit")->assertOk();
+        $this->actingAs($admin)->get('/admin/login-logs')->assertOk();
+        $this->actingAs($admin)->get('/admin/wahanas')->assertForbidden();
+
+        // Operator melihat dashboard operasional yang sekarang, tanpa akses manajemen akun
+        $this->flushSession();
+        $this->actingAs($operator)
+            ->get('/admin')
+            ->assertOk()
+            ->assertSee('Dashboard Operator')
+            ->assertSee('Wahana')
+            ->assertDontSee('Akun Pengguna')
+            ->assertDontSee('Riwayat Login');
+
+        $this->actingAs($operator)->get('/admin/wahanas')->assertOk();
+        $this->actingAs($operator)->get('/admin/users')->assertForbidden();
+        $this->actingAs($operator)->get('/admin/login-logs')->assertForbidden();
+
+        // Wisatawan tidak dapat masuk ke panel staff
+        $this->flushSession();
+        $this->actingAs($wisatawan)->get('/admin')->assertForbidden();
+    }
+
+    public function test_login_tracking_and_account_deactivation(): void
+    {
+        $wisatawan = User::where('role', 'wisatawan')->firstOrFail();
+
+        // Login gagal melalui API tetap tercatat di login_logs
+        $this->postJson('/api/auth/login', [
+            'email' => $wisatawan->email,
+            'password' => 'salah-password',
+        ])->assertStatus(401);
+
+        $this->assertDatabaseHas('login_logs', [
+            'email' => $wisatawan->email,
+            'channel' => 'API Web',
+            'status' => 'Gagal',
+        ]);
+
+        // Login berhasil melalui API memperbarui statistik user & login_logs
+        $this->postJson('/api/auth/login', [
+            'email' => $wisatawan->email,
+            'password' => 'password123',
+        ])->assertOk();
+
+        $wisatawan->refresh();
+        $this->assertSame(1, $wisatawan->login_count);
+        $this->assertSame('API Web', $wisatawan->last_login_channel);
+        $this->assertNotNull($wisatawan->last_login_at);
+
+        // Login melalui web guard (Filament CMS) tercatat sebagai Filament CMS
+        $admin = User::where('role', 'admin')->firstOrFail();
+        $this->assertTrue(Auth::guard('web')->attempt([
+            'email' => $admin->email,
+            'password' => 'admin12345',
+        ]));
+        Auth::guard('web')->logout();
+
+        $this->assertDatabaseHas('login_logs', [
+            'user_id' => $admin->id,
+            'channel' => 'Filament CMS',
+            'status' => 'Berhasil',
+        ]);
+
+        // Menonaktifkan akun memblokir API login & akses panel
+        $wisatawan->update(['is_active' => false]);
+        $this->postJson('/api/auth/login', [
+            'email' => $wisatawan->email,
+            'password' => 'password123',
+        ])->assertStatus(403);
+
+        $this->assertTrue(
+            LoginLog::where('email', $wisatawan->email)->where('status', 'Ditolak')->exists()
+        );
+
+        $operator = User::where('role', 'operator')->firstOrFail();
+        $operator->update(['is_active' => false]);
+        $this->actingAs($operator)->get('/admin')->assertForbidden();
     }
 }

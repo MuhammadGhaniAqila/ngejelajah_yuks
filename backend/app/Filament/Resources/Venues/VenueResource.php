@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources\Venues;
 
+use App\Filament\Base\OperatorResource;
 use App\Filament\Resources\Venues\Pages\CreateVenue;
 use App\Filament\Resources\Venues\Pages\EditVenue;
 use App\Filament\Resources\Venues\Pages\ListVenues;
@@ -9,12 +10,11 @@ use App\Filament\Resources\Venues\Schemas\VenueForm;
 use App\Filament\Resources\Venues\Tables\VenuesTable;
 use App\Models\Venue;
 use BackedEnum;
-use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
 
-class VenueResource extends Resource
+class VenueResource extends OperatorResource
 {
     protected static ?string $model = Venue::class;
 

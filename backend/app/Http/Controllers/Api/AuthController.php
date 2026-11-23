@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Services\LoginTracker;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -31,16 +32,18 @@ class AuthController extends Controller
             'nik' => $validated['nik'],
             'no_wa' => $validated['no_wa'],
             'role' => 'wisatawan',
+            'is_active' => true,
         ]);
 
         $token = $user->createToken('jelajahin-client')->plainTextToken;
+        LoginTracker::recordSuccess($user, 'API Registrasi', $request);
 
         return response()->json([
             'success' => true,
             'message' => 'Pendaftaran akun berhasil.',
             'data' => [
                 'token' => $token,
-                'user' => $user->toApiArray(),
+                'user' => $user->fresh()->toApiArray(),
             ],
         ], 201);
     }
@@ -55,20 +58,32 @@ class AuthController extends Controller
         $user = User::where('email', $validated['email'])->first();
 
         if (! $user || ! Hash::check($validated['password'], $user->password)) {
+            LoginTracker::recordFailure($user, $validated['email'], 'API Web', 'Gagal', $request);
+
             return response()->json([
                 'success' => false,
                 'message' => 'Email atau kata sandi tidak sesuai.',
             ], 401);
         }
 
+        if (! ($user->is_active ?? true)) {
+            LoginTracker::recordFailure($user, $user->email, 'API Web', 'Ditolak', $request);
+
+            return response()->json([
+                'success' => false,
+                'message' => 'Akun Anda sedang dinonaktifkan oleh Admin.',
+            ], 403);
+        }
+
         $token = $user->createToken('jelajahin-client')->plainTextToken;
+        LoginTracker::recordSuccess($user, 'API Web', $request);
 
         return response()->json([
             'success' => true,
             'message' => 'Login berhasil.',
             'data' => [
                 'token' => $token,
-                'user' => $user->toApiArray(),
+                'user' => $user->fresh()->toApiArray(),
             ],
         ]);
     }

@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources\KuotaHarians;
 
+use App\Filament\Base\OperatorResource;
 use App\Filament\Resources\KuotaHarians\Pages\CreateKuotaHarian;
 use App\Filament\Resources\KuotaHarians\Pages\EditKuotaHarian;
 use App\Filament\Resources\KuotaHarians\Pages\ListKuotaHarians;
@@ -9,12 +10,11 @@ use App\Filament\Resources\KuotaHarians\Schemas\KuotaHarianForm;
 use App\Filament\Resources\KuotaHarians\Tables\KuotaHariansTable;
 use App\Models\KuotaHarian;
 use BackedEnum;
-use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
 
-class KuotaHarianResource extends Resource
+class KuotaHarianResource extends OperatorResource
 {
     protected static ?string $model = KuotaHarian::class;
 

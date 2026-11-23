@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources\Wahanas;
 
+use App\Filament\Base\OperatorResource;
 use App\Filament\Resources\Wahanas\Pages\CreateWahana;
 use App\Filament\Resources\Wahanas\Pages\EditWahana;
 use App\Filament\Resources\Wahanas\Pages\ListWahanas;
@@ -9,12 +10,11 @@ use App\Filament\Resources\Wahanas\Schemas\WahanaForm;
 use App\Filament\Resources\Wahanas\Tables\WahanasTable;
 use App\Models\Wahana;
 use BackedEnum;
-use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
 
-class WahanaResource extends Resource
+class WahanaResource extends OperatorResource
 {
     protected static ?string $model = Wahana::class;
 

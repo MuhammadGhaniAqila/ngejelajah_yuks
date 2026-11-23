@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources\KulinerFnbs;
 
+use App\Filament\Base\OperatorResource;
 use App\Filament\Resources\KulinerFnbs\Pages\CreateKulinerFnb;
 use App\Filament\Resources\KulinerFnbs\Pages\EditKulinerFnb;
 use App\Filament\Resources\KulinerFnbs\Pages\ListKulinerFnbs;
@@ -9,12 +10,11 @@ use App\Filament\Resources\KulinerFnbs\Schemas\KulinerFnbForm;
 use App\Filament\Resources\KulinerFnbs\Tables\KulinerFnbsTable;
 use App\Models\KulinerFnb;
 use BackedEnum;
-use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
 
-class KulinerFnbResource extends Resource
+class KulinerFnbResource extends OperatorResource
 {
     protected static ?string $model = KulinerFnb::class;
 

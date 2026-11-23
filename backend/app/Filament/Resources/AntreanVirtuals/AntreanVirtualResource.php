@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources\AntreanVirtuals;
 
+use App\Filament\Base\OperatorResource;
 use App\Filament\Resources\AntreanVirtuals\Pages\CreateAntreanVirtual;
 use App\Filament\Resources\AntreanVirtuals\Pages\EditAntreanVirtual;
 use App\Filament\Resources\AntreanVirtuals\Pages\ListAntreanVirtuals;
@@ -9,12 +10,11 @@ use App\Filament\Resources\AntreanVirtuals\Schemas\AntreanVirtualForm;
 use App\Filament\Resources\AntreanVirtuals\Tables\AntreanVirtualsTable;
 use App\Models\AntreanVirtual;
 use BackedEnum;
-use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
 
-class AntreanVirtualResource extends Resource
+class AntreanVirtualResource extends OperatorResource
 {
     protected static ?string $model = AntreanVirtual::class;
 

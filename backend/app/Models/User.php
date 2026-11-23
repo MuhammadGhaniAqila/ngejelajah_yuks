@@ -13,7 +13,19 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
-#[Fillable(['name', 'email', 'password', 'nik', 'no_wa', 'role'])]
+#[Fillable([
+    'name',
+    'email',
+    'password',
+    'nik',
+    'no_wa',
+    'role',
+    'is_active',
+    'login_count',
+    'last_login_at',
+    'last_login_ip',
+    'last_login_channel',
+])]
 #[Hidden(['password', 'remember_token'])]
 class User extends Authenticatable implements FilamentUser
 {
@@ -25,12 +37,25 @@ class User extends Authenticatable implements FilamentUser
         return [
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
+            'is_active' => 'boolean',
+            'login_count' => 'integer',
+            'last_login_at' => 'datetime',
         ];
+    }
+
+    public function isAdmin(): bool
+    {
+        return $this->role === 'admin';
+    }
+
+    public function isOperator(): bool
+    {
+        return $this->role === 'operator';
     }
 
     public function canAccessPanel(Panel $panel): bool
     {
-        return in_array($this->role, ['admin', 'operator'], true);
+        return (bool) ($this->is_active ?? true) && in_array($this->role, ['admin', 'operator'], true);
     }
 
     public function reservasiTikets(): HasMany
@@ -43,6 +68,11 @@ class User extends Authenticatable implements FilamentUser
         return $this->hasMany(AntreanVirtual::class);
     }
 
+    public function loginLogs(): HasMany
+    {
+        return $this->hasMany(LoginLog::class);
+    }
+
     public function toApiArray(): array
     {
         return [
@@ -52,6 +82,8 @@ class User extends Authenticatable implements FilamentUser
             'nik' => $this->nik,
             'no_wa' => $this->no_wa,
             'role' => $this->role,
+            'is_active' => (bool) ($this->is_active ?? true),
+            'last_login_at' => $this->last_login_at?->toIso8601String(),
         ];
     }
 }

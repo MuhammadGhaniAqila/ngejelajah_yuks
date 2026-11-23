@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources\Acaras;
 
+use App\Filament\Base\OperatorResource;
 use App\Filament\Resources\Acaras\Pages\CreateAcara;
 use App\Filament\Resources\Acaras\Pages\EditAcara;
 use App\Filament\Resources\Acaras\Pages\ListAcaras;
@@ -9,12 +10,11 @@ use App\Filament\Resources\Acaras\Schemas\AcaraForm;
 use App\Filament\Resources\Acaras\Tables\AcarasTable;
 use App\Models\Acara;
 use BackedEnum;
-use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
 
-class AcaraResource extends Resource
+class AcaraResource extends OperatorResource
 {
     protected static ?string $model = Acara::class;
 
