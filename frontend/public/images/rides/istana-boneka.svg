@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" width="640" height="360" role="img" aria-label="Ilustrasi Istana Boneka Nusantara">
+  <rect width="640" height="360" fill="#162A5A"/>
+  <rect x="140" y="165" width="360" height="150" rx="8" fill="#0B1B3B" stroke="#F2B705" stroke-width="3"/>
+  <polygon points="140,165 215,95 290,165" fill="#234284"/>
+  <polygon points="245,165 320,65 395,165" fill="#2B52A0"/>
+  <polygon points="350,165 425,95 500,165" fill="#234284"/>
+  <path d="M275 315 L275 230 A45 45 0 0 1 365 230 L365 315 Z" fill="#F2B705"/>
+  <path d="M180 265 L180 215 A22 22 0 0 1 224 215 L224 265 Z" fill="#F2B705" opacity="0.4"/>
+  <path d="M416 265 L416 215 A22 22 0 0 1 460 215 L460 265 Z" fill="#F2B705" opacity="0.4"/>
+  <rect y="315" width="640" height="45" fill="#08142C"/>
+</svg>

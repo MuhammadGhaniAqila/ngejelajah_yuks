@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" width="640" height="360" role="img" aria-label="Ilustrasi wahana air Arung Jeram">
+  <rect width="640" height="360" fill="#0D2847"/>
+  <path d="M0 220 Q90 190 180 220 T360 220 T540 220 T720 220 L720 360 L0 360 Z" fill="#164E63"/>
+  <path d="M0 255 Q80 230 160 255 T320 255 T480 255 T640 255 L640 360 L0 360 Z" fill="#0E7490" opacity="0.7"/>
+  <g transform="translate(320,210) rotate(-6)">
+    <ellipse cx="0" cy="0" rx="95" ry="34" fill="#F2B705"/>
+    <ellipse cx="0" cy="-6" rx="72" ry="20" fill="#0B1B3B"/>
+  </g>
+  <path d="M190 180 Q210 140 240 165" fill="none" stroke="#E0F2FE" stroke-width="5" stroke-linecap="round"/>
+  <path d="M420 175 Q445 135 470 165" fill="none" stroke="#E0F2FE" stroke-width="5" stroke-linecap="round"/>
+</svg>

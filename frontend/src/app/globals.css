@@ -1,0 +1,123 @@
+@import "tailwindcss";
+
+:root {
+  --bg-canvas: #ffffff;
+  --bg-soft: #f4f8fc;
+  --bg-sky: #ebf5ff;
+  --ancol-blue: #0033a0;
+  --ancol-blue-hover: #002678;
+  --dufan-amber: #ffb800;
+  --dufan-amber-hover: #f2aa00;
+  --ink-primary: #0f2347;
+  --ink-muted: #475569;
+  --border-light: #dce6f5;
+}
+
+@theme inline {
+  --color-background: var(--bg-canvas);
+  --color-foreground: var(--ink-primary);
+  --color-ancol-blue: var(--ancol-blue);
+  --color-dufan-amber: var(--dufan-amber);
+  --font-display: var(--font-poppins), system-ui, sans-serif;
+  --font-sans: var(--font-jakarta), system-ui, -apple-system, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+  color-scheme: light;
+}
+
+body {
+  background-color: var(--bg-canvas);
+  color: var(--ink-primary);
+  font-family: var(--font-sans);
+  overflow-x: clip;
+}
+
+/* Accessible pointer affordances (R-39) */
+@layer base {
+  a[href],
+  button:not(:disabled),
+  summary,
+  select:not(:disabled),
+  label[for],
+  input[type="checkbox"]:not(:disabled),
+  input[type="radio"]:not(:disabled),
+  [role="button"]:not([aria-disabled="true"]),
+  [role="tab"]:not([aria-disabled="true"]) {
+    cursor: pointer;
+  }
+
+  button:disabled,
+  select:disabled,
+  input:disabled,
+  [aria-disabled="true"] {
+    cursor: not-allowed;
+  }
+
+  :where(a, button, input, select, textarea, summary, [tabindex]):focus-visible {
+    outline: 3px solid var(--ancol-blue);
+    outline-offset: 2px;
+  }
+}
+
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+.no-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Native <dialog> modal scroll containment (modern-web-guidance) */
+dialog:modal {
+  overscroll-behavior: contain;
+}
+
+dialog::backdrop {
+  background: rgba(15, 35, 71, 0.58);
+  overflow: hidden;
+  overscroll-behavior: contain;
+}
+
+/* Identity motif: perforated light coastal ticket divider */
+.ticket-divider {
+  position: relative;
+  border-top: 2px dashed #c7d7ec;
+}
+
+.visually-hidden:where(:not(:focus-within, :active)) {
+  position: absolute !important;
+  clip-path: inset(50%) !important;
+  overflow: hidden !important;
+  width: 1px !important;
+  height: 1px !important;
+  margin: -1px !important;
+  padding: 0 !important;
+  border: 0 !important;
+  white-space: nowrap !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+@media (forced-colors: active) {
+  .ticket-divider {
+    border-top-color: CanvasText;
+  }
+}

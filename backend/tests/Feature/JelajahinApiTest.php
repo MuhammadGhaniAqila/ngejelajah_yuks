@@ -1,0 +1,125 @@
+<?php
+
+namespace Tests\Feature;
+
+use App\Models\KuotaHarian;
+use App\Models\PaketTiket;
+use App\Models\User;
+use App\Models\Wahana;
+use Database\Seeders\DatabaseSeeder;
+use Illuminate\Foundation\Testing\RefreshDatabase;
+use Tests\TestCase;
+
+class JelajahinApiTest extends TestCase
+{
+    use RefreshDatabase;
+
+    protected function setUp(): void
+    {
+        parent::setUp();
+        $this->seed(DatabaseSeeder::class);
+    }
+
+    public function test_public_endpoints_and_filament_login_work(): void
+    {
+        $this->getJson('/api/kawasan')
+            ->assertOk()
+            ->assertJsonPath('success', true)
+            ->assertJsonPath('data.nama_kawasan', 'Dunia Fantasi (Dufan) Ancol');
+
+        $this->getJson('/api/paket-tiket')
+            ->assertOk()
+            ->assertJsonCount(2, 'data');
+
+        $this->getJson('/api/wahana')
+            ->assertOk()
+            ->assertJsonCount(6, 'data');
+
+        // Filter tinggi badan 110 cm harus mengecualikan wahana minimal 125 cm
+        $this->getJson('/api/wahana?tinggi=110')
+            ->assertOk()
+            ->assertJsonCount(4, 'data');
+
+        // Portal content endpoints (Promo, Acara, Venue, Kuliner, Blog)
+        $this->getJson('/api/promo')->assertOk()->assertJsonCount(4, 'data');
+        $this->getJson('/api/acara')->assertOk()->assertJsonCount(4, 'data');
+        $this->getJson('/api/venue')->assertOk()->assertJsonCount(4, 'data');
+        $this->getJson('/api/kuliner')->assertOk()->assertJsonCount(4, 'data');
+        $this->getJson('/api/blog')->assertOk()->assertJsonCount(3, 'data');
+        $this->getJson('/api/portal-home')
+            ->assertOk()
+            ->assertJsonPath('success', true)
+            ->assertJsonCount(6, 'data.wahana')
+            ->assertJsonCount(4, 'data.promo');
+
+        // Filament /admin/login page renders cleanly
+        $this->get('/admin/login')->assertOk();
+    }
+
+    public function test_full_ticketing_checkin_and_virtual_queue_flow(): void
+    {
+        $regRes = $this->postJson('/api/auth/register', [
+            'nama_lengkap' => 'Siti Lestari',
+            'email' => 'siti@example.com',
+            'password' => 'password123',
+            'nik' => '3302011205080099',
+            'no_wa' => '081299998888',
+        ])->assertCreated();
+
+        $userToken = $regRes->json('data.token');
+        $paket = PaketTiket::firstOrFail();
+        $wahana = Wahana::where('status_lampu', 'Hijau')->firstOrFail();
+        $today = now()->format('Y-m-d');
+        $kuotaBefore = KuotaHarian::whereDate('tanggal', $today)->firstOrFail()->kuota_terpakai;
+
+        // 1. Pesan tiket
+        $bookingRes = $this->withToken($userToken)
+            ->postJson('/api/reservasi', [
+                'paket_id' => $paket->id,
+                'tanggal_kunjungan' => $today,
+                'jumlah_tiket' => 2,
+                'metode_pembayaran' => 'QRIS Instan',
+            ])
+            ->assertCreated();
+
+        $qrToken = $bookingRes->json('data.qr_token');
+        $this->assertEquals($kuotaBefore + 2, KuotaHarian::whereDate('tanggal', $today)->firstOrFail()->kuota_terpakai);
+
+        // 2. Belum check-in -> ambil antrean harus ditolak 422
+        $this->withToken($userToken)
+            ->postJson('/api/antrean', ['wahana_id' => $wahana->id])
+            ->assertStatus(422);
+
+        // 3. Operator validasi check-in (reset cached sanctum guard in same test case)
+        $this->app['auth']->forgetGuards();
+        $operator = User::where('role', 'operator')->firstOrFail();
+        $opToken = $operator->createToken('op-test')->plainTextToken;
+
+        $this->withToken($opToken)
+            ->postJson('/api/operator/check-in', ['kode' => $qrToken])
+            ->assertOk()
+            ->assertJsonPath('data.status_kunjungan', 'Aktif di Kawasan');
+
+        // 4. Sekarang bisa ambil antrean virtual
+        $this->app['auth']->forgetGuards();
+        $queueRes = $this->withToken($userToken)
+            ->postJson('/api/antrean', ['wahana_id' => $wahana->id])
+            ->assertCreated()
+            ->assertJsonPath('data.status_antrean', 'Menunggu');
+
+        $antreanId = $queueRes->json('data.id');
+
+        // 5. Operator panggil kloter berikutnya
+        $this->app['auth']->forgetGuards();
+        $this->withToken($opToken)
+            ->postJson("/api/operator/wahana/{$wahana->id}/panggil-kloter")
+            ->assertOk();
+
+        // Cek antrean milik user berubah menjadi Dipanggil atau Selesai sesuai kloter
+        $this->app['auth']->forgetGuards();
+        $this->withToken($userToken)
+            ->getJson('/api/antrean/saya')
+            ->assertOk()
+            ->assertJsonPath('data.0.id', $antreanId);
+    }
+}
