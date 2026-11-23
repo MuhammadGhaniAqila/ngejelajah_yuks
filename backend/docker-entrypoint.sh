@@ -16,6 +16,8 @@ fi
 mkdir -p storage/framework/sessions storage/framework/views storage/framework/cache storage/logs bootstrap/cache
 chown -R www-data:www-data storage bootstrap/cache
 
+export LOG_CHANNEL="${LOG_CHANNEL:-stderr}"
+
 php artisan optimize:clear || true
 php artisan storage:link || true
 
@@ -41,7 +43,12 @@ try {
   sleep 2
 done
 
-php artisan migrate --force
+MIGRATE_DB_URL="${DATABASE_URL_UNPOOLED:-${POSTGRES_URL_NON_POOLING:-${DB_URL:-${DATABASE_URL:-}}}}"
+if [ -n "${MIGRATE_DB_URL}" ]; then
+  DB_URL="${MIGRATE_DB_URL}" php artisan migrate --force
+else
+  php artisan migrate --force
+fi
 
 if [ "${AUTO_SEED:-auto}" = "true" ]; then
   php artisan db:seed --force
@@ -57,5 +64,7 @@ elif [ "${AUTO_SEED:-auto}" = "auto" ]; then
     php artisan db:seed --force
   fi
 fi
+
+chown -R www-data:www-data storage bootstrap/cache
 
 exec apache2-foreground
