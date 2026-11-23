@@ -1,5 +1,11 @@
 import Link from "next/link";
 
+const filamentAdminUrl =
+  process.env.NEXT_PUBLIC_ADMIN_URL ||
+  (process.env.NEXT_PUBLIC_API_URL
+    ? process.env.NEXT_PUBLIC_API_URL.replace(/\/api\/?$/, "/admin")
+    : "http://127.0.0.1:8000/admin");
+
 export function Footer() {
   return (
     <footer className="mt-auto border-t border-[#DCE6F5] bg-white text-[#475569]">
@@ -138,12 +144,12 @@ export function Footer() {
               </Link>
             </li>
             <li>
-              <Link
-                href="/admin"
+              <a
+                href={filamentAdminUrl}
                 className="hover:text-[#0033A0] hover:underline"
               >
-                Dashboard Admin &amp; Operator
-              </Link>
+                Panel Admin Filament
+              </a>
             </li>
             <li className="text-xs text-[#475569]">
               Jl. Lodan Timur No. 7, Taman Impian Jaya Ancol, Jakarta Utara

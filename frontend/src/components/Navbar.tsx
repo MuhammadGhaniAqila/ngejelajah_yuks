@@ -5,6 +5,7 @@ import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { ChevronDown, Menu, Search, UserRound, X } from "lucide-react";
 import {
+  FILAMENT_ADMIN_URL,
   api,
   clearAuthSession,
   getSavedToken,
@@ -293,17 +294,12 @@ export function Navbar() {
           {user ? (
             <div className="flex items-center gap-2">
               {user.role === "admin" || user.role === "operator" ? (
-                <Link
-                  href="/admin"
-                  aria-current={pathname === "/admin" ? "page" : undefined}
-                  className={`inline-flex min-h-[40px] items-center whitespace-nowrap rounded-full px-3.5 py-1.5 text-xs font-bold transition-colors ${
-                    pathname === "/admin"
-                      ? "bg-[#FFB800] text-[#0F2347]"
-                      : "border border-[#FFB800] bg-[#FFF6D6] text-[#8F6400] hover:bg-[#FFB800] hover:text-[#0F2347]"
-                  }`}
+                <a
+                  href={FILAMENT_ADMIN_URL}
+                  className="inline-flex min-h-[40px] items-center whitespace-nowrap rounded-full border border-[#FFB800] bg-[#FFF6D6] px-3.5 py-1.5 text-xs font-bold text-[#8F6400] transition-colors hover:bg-[#FFB800] hover:text-[#0F2347]"
                 >
-                  Admin
-                </Link>
+                  Panel Admin
+                </a>
               ) : null}
               <Link
                 href="/tiket-saya"
@@ -411,13 +407,13 @@ export function Navbar() {
                     </button>
                   </div>
                   {user.role === "admin" || user.role === "operator" ? (
-                    <Link
-                      href="/admin"
+                    <a
+                      href={FILAMENT_ADMIN_URL}
                       onClick={() => setOpenForPath(null)}
                       className="inline-flex min-h-[44px] w-full items-center justify-center rounded-full border border-[#FFB800] bg-[#FFF6D6] px-4 text-sm font-bold text-[#8F6400]"
                     >
-                      Dashboard Admin
-                    </Link>
+                      Panel Admin Filament
+                    </a>
                   ) : null}
                 </div>
               ) : (
