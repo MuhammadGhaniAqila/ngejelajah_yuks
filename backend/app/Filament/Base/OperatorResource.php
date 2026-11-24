@@ -11,7 +11,7 @@ abstract class OperatorResource extends RoleResource
         $user = auth()->user();
 
         return $user instanceof User
-            && $user->isOperator()
+            && $user->isStaff()
             && (bool) ($user->is_active ?? true);
     }
 }

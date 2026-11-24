@@ -32,7 +32,7 @@ class Dashboard extends BaseDashboard
         $user = auth()->user();
 
         if ($user instanceof User && $user->isAdmin()) {
-            return 'Kelola database akun pengguna, atur role & status aktif, dan pantau aktivitas login.';
+            return 'Akses penuh seluruh manajemen operasional, konten kawasan, database akun pengguna, dan pemantauan aktivitas login.';
         }
 
         if ($user instanceof User && $user->isOperator()) {

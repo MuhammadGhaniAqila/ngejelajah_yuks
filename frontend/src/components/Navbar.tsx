@@ -144,9 +144,6 @@ export function Navbar() {
           >
             Jelajahin
           </span>
-          <span className="hidden whitespace-nowrap rounded-full bg-[#EBF5FF] px-2.5 py-0.5 text-[11px] font-semibold text-[#0033A0] lg:inline-block">
-            Theme Park
-          </span>
         </Link>
 
         {/* Desktop Single-Row Navigation */}

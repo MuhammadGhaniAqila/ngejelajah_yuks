@@ -53,9 +53,14 @@ class User extends Authenticatable implements FilamentUser
         return $this->role === 'operator';
     }
 
+    public function isStaff(): bool
+    {
+        return in_array($this->role, ['admin', 'operator'], true);
+    }
+
     public function canAccessPanel(Panel $panel): bool
     {
-        return (bool) ($this->is_active ?? true) && in_array($this->role, ['admin', 'operator'], true);
+        return (bool) ($this->is_active ?? true) && $this->isStaff();
     }
 
     public function reservasiTikets(): HasMany

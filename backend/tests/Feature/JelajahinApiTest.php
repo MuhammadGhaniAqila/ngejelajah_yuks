@@ -150,28 +150,30 @@ class JelajahinApiTest extends TestCase
             ->assertJsonPath('data.0.id', $antreanId);
     }
 
-    public function test_admin_and_operator_dashboards_are_strictly_separated(): void
+    public function test_admin_and_operator_dashboards_have_proper_rbac_hierarchy(): void
     {
         $admin = User::where('role', 'admin')->firstOrFail();
         $operator = User::where('role', 'operator')->firstOrFail();
         $wisatawan = User::where('role', 'wisatawan')->firstOrFail();
 
-        // Admin hanya melihat Panel Admin (Akun Pengguna & Riwayat Login), bukan menu Operator
+        // Admin memiliki akses penuh: Dashboard Admin + Manajemen Akun + seluruh menu Operasional & Konten
         $this->actingAs($admin)
             ->get('/admin')
             ->assertOk()
             ->assertSee('Dashboard Admin')
             ->assertSee('Akun Pengguna')
             ->assertSee('Riwayat Login')
-            ->assertDontSee('Wahana');
+            ->assertSee('Wahana')
+            ->assertSee('Reservasi Tiket');
 
         $this->actingAs($admin)->get('/admin/users')->assertOk();
         $this->actingAs($admin)->get('/admin/users/create')->assertOk();
         $this->actingAs($admin)->get("/admin/users/{$wisatawan->id}/edit")->assertOk();
         $this->actingAs($admin)->get('/admin/login-logs')->assertOk();
-        $this->actingAs($admin)->get('/admin/wahanas')->assertForbidden();
+        $this->actingAs($admin)->get('/admin/wahanas')->assertOk();
+        $this->actingAs($admin)->get('/admin/reservasi-tikets')->assertOk();
 
-        // Operator melihat dashboard operasional yang sekarang, tanpa akses manajemen akun
+        // Operator hanya mengakses dashboard & menu operasional, tanpa akses manajemen akun
         $this->flushSession();
         $this->actingAs($operator)
             ->get('/admin')
